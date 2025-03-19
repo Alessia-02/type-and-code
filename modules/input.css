@@ -1,0 +1,140 @@
+#intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100svw;
+  height: 100svh;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.intro-content {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 3rem;
+}
+
+#controls-top,
+#controls-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+  width: 100svw;
+}
+
+.buttons-row {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  touch-action: manipulation;
+}
+
+.control-description-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+.control-description-container hr {
+  flex: 1;
+  border: none;
+  height: 1px;
+  background-color: white;
+  opacity: 0.3;
+}
+
+.control-description {
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.control-button {
+  --size: 3rem;
+  --border-radius: 0.5rem;
+  height: var(--size);
+  background-color: deeppink;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  padding: 0 1rem;
+}
+
+.control-button.square {
+  width: var(--size);
+  padding: 0;
+}
+
+#controls-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#controls-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#increase-sensitivity,
+#decrease-sensitivity,
+#increase-density,
+#decrease-density {
+  background-color: deeppink;
+  border: none;
+  width: var(--size);
+  height: var(--size);
+}
+
+#increase-sensitivity {
+  border-radius: 0 0 0 var(--border-radius);
+}
+
+#decrease-sensitivity {
+  border-radius: 0 0 var(--border-radius) 0;
+}
+
+#increase-density {
+  border-radius: var(--border-radius) 0 0 0;
+}
+
+#decrease-density {
+  border-radius: 0 var(--border-radius) 0 0;
+}
+
+#important-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+#important-info {
+  background-color: rgba(255, 215, 0, 0.2);
+  border: 2px solid gold;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+#important-info p:first-child {
+  color: deeppink;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+#important-info-title {
+  color: gold !important;
+}
