@@ -9,7 +9,7 @@ export const configurazione = {
   sensibilitàMicrofonoBase: 6,
   densitàPuntiBase: 1,
 
-  nascondiInterfaccia: false,
+  nascondiInterfaccia: true,
 };
 
 /**
@@ -44,26 +44,32 @@ export function disegnaPunto({
   gamma = 0,
   puntoSuccessivo,
 }) {
-  let p = interpolate({ x, y }, puntoSuccessivo, frameCount, 3);
-  let lunghezza = map(volume, 0, 1, 150, 200);
-  let larghezza = map(sin(frameCount * 10 + indice), -1, 1, 50, 150);
+  // let p = interpolate({ x, y }, puntoSuccessivo, frameCount, 3);
+  // let lunghezza = map(volume, 0, 1, 150, 200);
+  // let larghezza = map(sin(frameCount * 10 + indice), -1, 1, 50, 150);
 
-  stroke("#FF1493");
-  let i = indice + frameCount * 100;
-  if (i % 2 == 0) fill("#FF1493");
-  else if (i % 2 == 1) fill("#F400A1");
-  // fill("#F400A1");
-  ellipse(p.x, p.y, lunghezza, larghezza);
+  // stroke("#FF1493");
+  // let i = indice + frameCount * 100;
+  // if (i % 2 == 0) fill("#FF1493");
+  // else if (i % 2 == 1) fill("#F400A1");
+  // // fill("#F400A1");
+  // ellipse(p.x, p.y, lunghezza, larghezza);
+
+  // push();
+  // if (indice % 2 == 0) fill("blue");
+  // else if (indice % 2 == 1) fill("white");
+  // noStroke();
+  // translate(x, y);
+  // rotate(angolo + frameCount * 10);
+  // ellipse(-lunghezza / 2, 0, larghezza, lunghezza / 2);
+  // pop();
+  // // image(img, x, y, 50, 50);
 
   push();
-  if (indice % 2 == 0) fill("blue");
-  else if (indice % 2 == 1) fill("white");
-  noStroke();
   translate(x, y);
-  rotate(angolo + frameCount * 10);
-  ellipse(-lunghezza / 2, 0, larghezza, lunghezza / 2);
+  stroke("white");
+  line(0, 0, 0, beta);
   pop();
-  // image(img, x, y, 50, 50);
 }
 
 // let img;
@@ -92,7 +98,7 @@ export function impostazioni() {
  * @param {function} disegnaTesto - La funzione che disegna il testo
  */
 export function sotto(disegnaTesto) {
-  background("white");
+  background("yellow");
 
   // // [INFO] Rimuovi il commento per disegnare il testo
   // fill("white");
