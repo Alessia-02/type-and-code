@@ -90,7 +90,10 @@ function draw() {
   const micLevel = audioController.getLevel();
   const orientationData = orientationController.getOrientationData();
 
-  points.forEach((point, index) =>
+  points.forEach((point, index) => {
+    let puntoSuccessivo = points[index + 1];
+    if (!puntoSuccessivo) puntoSuccessivo = points[0];
+
     disegnaPunto({
       x: point.x,
       y: point.y,
@@ -102,8 +105,9 @@ function draw() {
       beta: orientationData.beta,
       gamma: orientationData.gamma,
       frameCount,
-    })
-  );
+      puntoSuccessivo,
+    });
+  });
 
   //
 

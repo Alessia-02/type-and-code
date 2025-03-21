@@ -1,12 +1,12 @@
 export const configurazione = {
-  testo: "L",
+  testo: "Y",
 
   dimensione: 0.8,
   interlinea: 0.7,
   allineamento: "centro",
   percorsoFont: "./assets/InputMonoCondensed-BoldItalic.ttf",
 
-  sensibilitàMicrofonoBase: 1,
+  sensibilitàMicrofonoBase: 6,
   densitàPuntiBase: 1,
 
   nascondiInterfaccia: false,
@@ -27,6 +27,7 @@ export const configurazione = {
  * @property {number} [alpha] - Device orientation alpha angle (z-axis rotation) - Varia da 0 a 360
  * @property {number} [beta] - Device orientation beta angle (front-to-back tilt) - Varia da -90 a 90
  * @property {number} [gamma] - Device orientation gamma angle (left-to-right tilt) - Varia da -90 a 90
+ * @property {object} [puntoSuccessivo] - Il punto successivo
  *
  * @param {Ingredienti} ingredienti
  */
@@ -41,27 +42,38 @@ export function disegnaPunto({
   alpha = 0,
   beta = 0,
   gamma = 0,
+  puntoSuccessivo,
 }) {
-  const size = sin((frameCount + indice) * 6) * ((volume * unita) / 2) * unita;
+  let p = interpolate({ x, y }, puntoSuccessivo, frameCount, 3);
+  let lunghezza = map(volume, 0, 1, 150, 200);
+  let larghezza = map(sin(frameCount * 10 + indice), -1, 1, 50, 150);
 
-  if (indice % 2 == 0) {
-    fill("black");
-  } else {
-    fill("white");
-  }
-  noStroke();
+  stroke("#FF1493");
+  let i = indice + frameCount * 100;
+  if (i % 2 == 0) fill("#FF1493");
+  else if (i % 2 == 1) fill("#F400A1");
+  // fill("#F400A1");
+  ellipse(p.x, p.y, lunghezza, larghezza);
 
   push();
+  if (indice % 2 == 0) fill("blue");
+  else if (indice % 2 == 1) fill("white");
+  noStroke();
   translate(x, y);
-  ellipse(0, 0, size);
+  rotate(angolo + frameCount * 10);
+  ellipse(-lunghezza / 2, 0, larghezza, lunghezza / 2);
   pop();
+  // image(img, x, y, 50, 50);
 }
 
+// let img;
 /**
  * Carica le risorse necessarie
  * Esempio: carica immagini, suoni, ecc.
  */
-export function caricamentoRisorse() {}
+export function caricamentoRisorse() {
+  // img = loadImage(" ./assetsDigital Abstract Art Wallpaper.jpg");
+}
 
 /**
  * Imposta le impostazioni iniziali
@@ -70,6 +82,9 @@ export function caricamentoRisorse() {}
 export function impostazioni() {
   frameRate(30);
   angleMode(DEGREES);
+  rectMode(CENTER);
+  ellipseMode(CENTER);
+  imageMode(CENTER);
 }
 
 /**
@@ -77,11 +92,11 @@ export function impostazioni() {
  * @param {function} disegnaTesto - La funzione che disegna il testo
  */
 export function sotto(disegnaTesto) {
-  background("deeppink");
+  background("white");
 
-  // [INFO] Rimuovi il commento per disegnare il testo
-  fill("white");
-  disegnaTesto();
+  // // [INFO] Rimuovi il commento per disegnare il testo
+  // fill("white");
+  // disegnaTesto();
 }
 
 /**
@@ -92,4 +107,18 @@ export function sopra(disegnaTesto) {
   // [INFO] Rimuovi il commento per disegnare il testo
   // fill("black");
   // disegnaTesto();
+}
+
+///
+
+function interpolate(p1, p2, frameCount, cycleDuration) {
+  // Calcolare la posizione di interpolazione tra p1 e p2
+  let t = (frameCount % cycleDuration) / cycleDuration;
+
+  // Interpolazione lineare tra p1 e p2
+  let x = lerp(p1.x, p2.x, t);
+  let y = lerp(p1.y, p2.y, t);
+
+  // Restituire il punto interpolato
+  return { x, y };
 }
