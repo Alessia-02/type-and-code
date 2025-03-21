@@ -1,7 +1,7 @@
 export const configurazione = {
   testo: "Y",
 
-  dimensione: 0.8,
+  dimensione: 0.6,
   interlinea: 0.7,
   allineamento: "centro",
   percorsoFont: "./assets/InputMonoCondensed-BoldItalic.ttf",
