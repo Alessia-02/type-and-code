@@ -66,9 +66,11 @@ export function disegnaPunto({
   // // image(img, x, y, 50, 50);
 
   push();
+  let b = map(beta, -90, 90, -unita, unita);
+  let g = map(gamma, -90, 90, unita, -unita);
   translate(x, y);
   stroke("white");
-  line(0, 0, 0, beta);
+  line(0, 0, g, b);
   pop();
 }
 
