@@ -9,7 +9,7 @@ export const configurazione = {
   sensibilitàMicrofonoBase: 6,
   densitàPuntiBase: 1,
 
-  nascondiInterfaccia: true,
+  nascondiInterfaccia: false,
 };
 
 /**
